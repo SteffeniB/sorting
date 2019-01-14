@@ -7,62 +7,36 @@ function split(wholeArray) {
 }
 split([1, 2, 3]);
 
-function merge(arrOne, arrTwo) {
+function merge(arrLeft, arrRight) {
   let newArr = [];
-  // let mergedArr = arrOne.concat(arrTwo);
-  // for (let i = 0; i < mergedArr.length; i++) {
-  //   for (let j = 0; j < mergedArr.length; j++) {
-  //     let one = mergedArr[j];
-  //     let two = mergedArr[j - 1];
-  //     if (two < one) {
-  //       let temp = one;
-  //       one = two;
-  //       two = temp;
-  //       //arrOne = arrOne.slice(1);
-  //       newArr.push(two);
-  //     } else {
-  //       newArr.push(one);
-  //       //arrTwo = arrTwo.slice(1);
-  //     }
-  //   }
-  debugger;
-  let total = arrOne.length + arrTwo.length;
+  let total = arrLeft.length + arrRight.length;
   let indexLeft = 0;
   let indexRight = 0;
   while (newArr.length < total) {
-    let left = arrOne[indexLeft];
-    let right = arrTwo[indexRight];
-    if (left < right) {
+    let left = arrLeft[indexLeft];
+    let right = arrRight[indexRight];
+    if (left < right || indexRight === arrRight.length) {
       newArr.push(left);
       indexLeft++;
-    } else {
+    } else if (left > right || indexLeft === arrLeft.length) {
       newArr.push(right);
       indexRight++;
     }
-    if (indexLeft === arrOne.length) {
-      for (let i = indexRight; i < arrTwo.length; i++) {
-        newArr.push(arrTwo[i]);
-      }
-    }
-    if (indexRight === arrTwo.length) {
-      for (let i = indexLeft; i < arrOne.length; i++) {
-        newArr.push(arrOne[i]);
-      }
-    }
   }
-  console.log(newArr);
   return newArr;
 }
 
 function mergeSort(array) {
+  //debugger;
+  let merged;
   if (array.length <= 1) {
     return array;
   } else {
-    mergeSort(array);
+    let newArrays = split(array);
+    let leftArray = mergeSort(newArrays[0]);
+    let rightArray = mergeSort(newArrays[1]);
+    merged = merge(leftArray, rightArray);
   }
-  let splitArrays = split(array);
-  let merged = merge(splitArrays);
-  console.log(merged);
   return merged;
 }
-mergeSort([1, 2]);
+console.log(mergeSort([2, 1, 3, 4]));
