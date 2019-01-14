@@ -50,9 +50,19 @@ function merge(arrOne, arrTwo) {
       }
     }
   }
-
   console.log(newArr);
   return newArr;
 }
-merge([2], [1]);
-merge([1, 3], [2, 4]);
+
+function mergeSort(array) {
+  if (array.length <= 1) {
+    return array;
+  } else {
+    mergeSort(array);
+  }
+  let splitArrays = split(array);
+  let merged = merge(splitArrays);
+  console.log(merged);
+  return merged;
+}
+mergeSort([1, 2]);
