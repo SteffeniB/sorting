@@ -1,5 +1,4 @@
 function bubbleSort(arr) {
-  //   let newArr = [];
   debugger;
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr.length; j++) {
@@ -11,12 +10,13 @@ function bubbleSort(arr) {
         arr[j + 1] = newArr[1];
       }
     }
+    console.log(arr);
     return arr;
   }
 
   function swap(cur, next) {
     debugger;
-    let retArr;
+    let retArr = [];
     if (cur > next) {
       let temp = cur;
       cur = next;
