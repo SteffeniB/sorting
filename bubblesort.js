@@ -8,21 +8,25 @@ function bubbleSort(arr) {
         let newArr = swap(cur, next);
         arr[j] = newArr[0];
         arr[j + 1] = newArr[1];
+        //   } else {
+        //     arr[j] = cur;
+        //     arr[j + 1] = next;
+        //   }
       }
     }
-    console.log(arr);
-    return arr;
   }
+  console.log(arr);
+  return arr;
+}
 
-  function swap(cur, next) {
-    debugger;
-    let retArr = [];
-    if (cur > next) {
-      let temp = cur;
-      cur = next;
-      next = temp;
-      retArr = [cur, next];
-    }
-    return retArr;
+function swap(cur, next) {
+  debugger;
+  let retArr = [];
+  if (cur > next) {
+    let temp = cur;
+    cur = next;
+    next = temp;
+    retArr = [cur, next];
   }
+  return retArr;
 }
