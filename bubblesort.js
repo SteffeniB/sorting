@@ -15,7 +15,6 @@ function bubbleSort(arr) {
 }
 
 function swap(cur, next) {
-  debugger;
   let temp = cur;
   cur = next;
   next = temp;
